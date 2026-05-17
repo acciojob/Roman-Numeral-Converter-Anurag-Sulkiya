@@ -1,23 +1,37 @@
-function convertToRoman(num) {
-  	const obj = {
-      0:['M',1000], 
-      1:['D', 500], 
-      2:['C', 100], 
-      3:['L', 50], 
-      4:['X', 10], 
-      5:['V', 5], 
-      6:['I', 1]
-    };
 
-  //your code here
+
+function convertToRoman(num) {
+
+  const romanSymbols = [
+    ['M',  1000],
+    ['D',   500],
+    ['C',   100],
+    ['L',    50],
+    ['X',    10],
+    ['V',     5],
+    ['I',     1]
+  ];
+
+  let romanResult = '';
+
+  
+  for (let index = 0; index < romanSymbols.length; index++) {
+
+    const letter = romanSymbols[index][0]; // e.g. 'M'
+    const symbolValue = romanSymbols[index][1]; // e.g. 1000
+
+    while (num >= symbolValue) {
+      romanResult += letter;   
+      num -= symbolValue;      
+    }
+
+  }
+
+  return romanResult;
 
 }
-// You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line
 
-// console.log(convertToRoman(36));
+console.log(convertToRoman(14));   
+console.log(convertToRoman(798)); 
 
-
-
-
-// do not edit below this line
-module.exports = convertToRoman
+module.exports = convertToRoman;
